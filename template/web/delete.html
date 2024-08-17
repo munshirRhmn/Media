@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .check{
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+
+    }
+    button{
+        color: white;
+        background-color: rgb(201, 53, 53);
+        height: 50px;
+        width: 160px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+    }
+</style>
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div class="div1" style="height: 30vh;"></div>
+        <div class="check">
+            <p >Are you sure you want to delete "{{ user.username }}"?</p>
+            <a href=""><button type="submit">Confirm Delete</button></a>
+        </div>
+    </form>
+</body>
+
+</html>

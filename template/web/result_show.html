@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users List</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    button {
+        width: 140px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: rgb(25, 77, 174);
+        color: white;
+        border: none;
+
+
+    }
+
+    a button {
+        color: white;
+        text-decoration: none;
+    }
+    .clicks{
+        text-align: center;
+    }
+    
+</style>
+
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">Users List</h1>
+        <div style="height: 10vh;"></div>
+        <div class="row">
+            {% for user in users %}
+            <div class="col-md-4 col-sm-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4 style="text-align:center;">{{forloop.counter}}</h4>
+                        <h5 class="card-title" style="text-align: center;">{{ user.username }}</h5>
+                        <p class="card-text" style="text-align: center;">Email: {{ user.email }}</p>
+                        <!-- Add more user details here if needed -->
+                        <div class="clicks">
+                            <a href="{% url 'web:edit' slug=user.slug %}">
+                                <button style="background-color: rgb(53, 148, 53);">Edit</button>
+                            </a>
+                            <a href="{% url 'web:delete' slug=user.slug %}">
+                                <button style="background-color: rgb(157, 46, 46);">Delete</button>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+
+        </div>
+        <a href="{% url "web:index" %}"><button>Add Users +</button></a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
